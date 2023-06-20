@@ -65,32 +65,6 @@ const App = () => {
     window.localStorage.removeItem('loggedBlogappUser')
   }
 
-  const loginForm = () => (
-    <>
-    <h2>log in to application</h2>
-    <form onSubmit={handleLogin}>
-      <div>
-        username
-          <input
-          type="text"
-          value={username}
-          name="Username"
-          onChange={({ target }) => setUsername(target.value)}
-        />
-      </div>
-      <div>
-        password
-          <input
-          type="password"
-          value={password}
-          name="Password"
-          onChange={({ target }) => setPassword(target.value)}
-        />
-      </div>
-      <button type="submit">login</button>
-    </form>  
-    </>    
-  )
 
   const addBlog = (event) => {
        
@@ -138,7 +112,7 @@ const App = () => {
         .then(deletedlBlog => {
           console.log(deletedlBlog)
         })
-      var newList = [...blogs]
+      newList = [...blogs]
       newList = newList.filter(blog => blog.id !== blogErase)
       console.log('newList', newList)
       setBlogs(newList)
