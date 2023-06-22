@@ -1,0 +1,12 @@
+PUT http://localhost:3004/api/blogs/648ac7c4016a5240a299dcfe
+
+Content-Type: application/json
+Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFuZGl6MiIsImlkIjoiNjQ4YWM1ZDAwMTZhNTI0MGEyOTlkY2Y2IiwiaWF0IjoxNjg3MTc5MTcxLCJleHAiOjE2ODcxODI3NzF9.07T6A1f6KMYm1bIT__Zhdzu8LJbTqwVVhTzB6bIvEzc"
+
+{
+  "title": "Nu intreba de ce",
+  "author": "andiz",
+  "url": "www.astae.com",
+  "likes": 13,
+  "id": "648ac7c4016a5240a299dcfe",
+}
