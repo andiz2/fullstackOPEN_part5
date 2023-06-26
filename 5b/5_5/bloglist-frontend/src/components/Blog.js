@@ -1,7 +1,7 @@
 import {useState,useImperativeHandle, forwardRef} from 'react'
 import blogService from '../services/blogs'
 
-const Blog = ({blog, username, deleteBlog}) => {
+const Blog = ({blog, username, deleteBlog, addLike}) => {
 	console.log('blog', blog.id)
 	const blogStyle = {
 	    paddingTop: 10,
@@ -59,7 +59,7 @@ const Blog = ({blog, username, deleteBlog}) => {
 		    {blog.title}  {blog.author}
 		    <button onClick = {toggleVisibility} >hide</button> <br />
 		    {blog.url}<br /> 
-		    likes {blog.likes}  <button onClick = {increaseLikes2}>like</button> <br />
+		    likes {blog.likes}  <button onClick = {addLike}>like</button> <br />
 		    {username} <br />
 		    <button onClick  = {deleteBlog}>remove</button>
 	    </div>

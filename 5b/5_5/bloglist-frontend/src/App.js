@@ -23,7 +23,9 @@ const App = () => {
 
   useEffect(() => {
     blogService.getAll().then(blogs =>
-      setBlogs( blogs )
+      setBlogs( blogs.sort((a, b) => {
+        return b.likes - a.likes
+      }) )
     )  
   }, [])
 
@@ -119,6 +121,23 @@ const App = () => {
     }
   }
 
+  const addLike = (idAddLike) => {
+    let newList = [...blogs]
+    let toUpdate = newList.find(blog => blog.id === idAddLike)
+    // const blogObject = {
+    //   title: blog.title,
+    //   author: blog.author,
+    //   url: blog.url,
+    //   likes: likes++
+    // }
+    toUpdate.likes++
+    console.log("blogs", blogs)
+    console.log("newList", newList)
+    setBlogs(newList)
+    blogService.update(idAddLike, toUpdate)
+
+  }
+
 
 
 
@@ -176,6 +195,7 @@ const App = () => {
           {blogs.map(blog =>
             <Blog key={blog.id} blog={blog} username = {user.name}
             deleteBlog = {() => deleteBlog(blog.id)}
+            addLike = {() => addLike(blog.id)}
               />
           )}
         </div>
