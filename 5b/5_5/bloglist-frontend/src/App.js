@@ -11,7 +11,7 @@ const App = () => {
   const [blogs, setBlogs] = useState([])
   const [newTitle, setNewTitle] = useState('')
   const [newAuthor, setNewAuthor] = useState('')
-  const [newLikes, setNewLikes] = useState('')
+  const [newLikes, setNewLikes] = useState(0)
   const [newUrl, setNewUrl] = useState('')
   const [showAll, setShowAll] = useState(true)
 
@@ -77,7 +77,7 @@ const App = () => {
       url: newUrl,
       likes: 0,
     }
-    setBlogs(blogs.concat(blogObject))
+    //setBlogs(blogs.concat(blogObject))
     console.log("blogs", blogs)
     console.log("newTitle", newTitle)
     console.log("blogObject", blogObject)
@@ -96,11 +96,18 @@ const App = () => {
       .create(blogObject)
       .then(response => {
         console.log('blogs din valiblogs', blogs)
+        console.log('blogobj din blogserv', blogObject)
+        setBlogs(blogs.concat(blogObject))
+        blogService.getAll().then(blogs =>
+            setBlogs( blogs.sort((a, b) => {
+        return b.likes - a.likes
+      }) )
+    )  
       })
     setNewTitle('')
     setNewAuthor('')
     setNewUrl('')
-    setNewLikes('')
+    setNewLikes(0)
   }
 
   const deleteBlog = (blogErase) =>{
